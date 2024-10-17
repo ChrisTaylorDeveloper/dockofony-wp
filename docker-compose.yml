@@ -1,7 +1,7 @@
 services:
 
   wordpress:
-    image: wordpress
+    image: wordpress:${WP_IMAGE_TAG}
     ports:
       - ${PORT_HOST_WORDPRESS}:80
     environment:
