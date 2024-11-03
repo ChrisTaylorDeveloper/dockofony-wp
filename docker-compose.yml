@@ -18,6 +18,7 @@ services:
       context: ./wordpress
       args:
         - WP_IMAGE_TAG=${WP_IMAGE_TAG}
+        - XDEBUG=${XDEBUG}
 
   wordpress-cli:
     image: wordpress:cli
