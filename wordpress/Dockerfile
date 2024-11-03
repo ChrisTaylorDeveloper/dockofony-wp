@@ -21,5 +21,7 @@ RUN if [ "${XDEBUG}" = true ]; then \
             echo "xdebug.client_port = 9003"; \
             echo "xdebug.max_nesting_level = 512"; \
             echo "xdebug.start_with_request=yes"; \
+            echo "xdebug.log=/var/log/xdebug.log"; \
         } >> "$PHP_INI_DIR"/conf.d/xdebug.ini \
+        touch /var/log/xdebug.log && chmod 777 /var/log/xdebug.log \
     ;fi
