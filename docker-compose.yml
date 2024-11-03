@@ -1,7 +1,6 @@
 services:
 
   wordpress:
-    image: wordpress
     ports:
       - ${PORT_HOST_WORDPRESS}:80
     environment:
@@ -9,8 +8,16 @@ services:
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
+      WORDPRESS_DEBUG: '1'
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_DEBUG_LOG', true);
+        define('WP_DEBUG_DISPLAY', true);
     volumes:
       - ${WORDPRESS_DIR}:/var/www/html
+    build:
+      context: ./wordpress
+      args:
+        - WP_IMAGE_TAG=${WP_IMAGE_TAG}
 
   wordpress-cli:
     image: wordpress:cli
